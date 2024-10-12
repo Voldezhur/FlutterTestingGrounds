@@ -1,3 +1,4 @@
+import 'package:book_app/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:book_app/components/item_card.dart';
 import 'package:book_app/global/lists.dart';
@@ -22,6 +23,12 @@ class _FavouritePageState extends State<FavouritePage> {
         items.add(result);
       });
     }
+  }
+
+  // Переход на страницу корзины
+  void _navigateToCart(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const CartPage()));
   }
 
   // Функция для обновения стейта
@@ -92,9 +99,9 @@ class _FavouritePageState extends State<FavouritePage> {
                 );
               }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _navigateToAddNote(context),
+        onPressed: () => _navigateToCart(context),
         tooltip: 'Добавить книгу',
-        child: const Icon(Icons.add_circle_outline),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }
