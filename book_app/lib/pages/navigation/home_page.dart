@@ -50,6 +50,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Главная"),
+        actions: [
+          IconButton(
+            onPressed: () => _navigateToAddNote(context),
+            icon: const Icon(Icons.add),
+          )
+        ],
       ),
       body: items.isEmpty
           ? const Center(

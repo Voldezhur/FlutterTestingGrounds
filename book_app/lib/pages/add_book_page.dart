@@ -76,8 +76,15 @@ class _AddBookPageState extends State<AddBookPage> {
                         newBook.author.isNotEmpty &&
                         newBook.imageLink.isNotEmpty &&
                         newBook.description.isNotEmpty) {
-                      Navigator.pop(
-                          context, newBook); // Передаем новую книгу наверх
+                      // Очищаем текстовые поля для следующего ввода
+                      titleController.text = '';
+                      authorController.text = '';
+                      pageNumberController.text = '';
+                      imageLinkController.text = '';
+                      descriptionController.text = '';
+
+                      // Передаем новую книгу наверх
+                      Navigator.pop(context, newBook);
                     }
                   },
                   child: const Text("Добавить книгу"))

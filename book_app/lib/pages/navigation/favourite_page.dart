@@ -54,6 +54,12 @@ class _FavouritePageState extends State<FavouritePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Избранное"),
+        actions: [
+          IconButton(
+            onPressed: () => _navigateToAddNote(context),
+            icon: const Icon(Icons.add),
+          )
+        ],
       ),
       body: !items.any((item) => item.favourite)
           ? const Center(
