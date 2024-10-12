@@ -96,7 +96,7 @@ class _ItemCardState extends State<ItemCard> {
                         height: 20,
                       ),
                       Text(
-                        "Страниц: ${widget.itemList[widget.itemIndex].pageCount}",
+                        "Стоимость: ${widget.itemList[widget.itemIndex].price}",
                         style: const TextStyle(color: Colors.white),
                       ),
                     ],

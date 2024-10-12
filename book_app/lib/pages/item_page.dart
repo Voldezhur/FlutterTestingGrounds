@@ -38,6 +38,8 @@ class _ItemPageState extends State<ItemPage> {
                     items[widget.itemIndex].imageLink,
                     height: 300,
                   ),
+                  Text(
+                      "Количество страниц: ${items[widget.itemIndex].pageCount}"),
                   Container(
                     decoration: const BoxDecoration(
                         border:
