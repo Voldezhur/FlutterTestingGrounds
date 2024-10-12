@@ -1,3 +1,5 @@
+import 'package:book_app/models/cart_item.dart';
+import 'package:book_app/models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:book_app/global/lists.dart';
 import 'package:book_app/pages/item_page.dart';
@@ -41,6 +43,25 @@ class _ItemCardState extends State<ItemCard> {
     }
   }
 
+  // Добавить в корзину
+  void _addToCart() {
+    setState(() {
+      Item bookToAdd = items[widget.itemIndex];
+
+      int existingItemIndex = cart.indexWhere((item) => item.item == bookToAdd);
+
+      // Проверяем, есть ли уже книга в корзине
+      // Если нет, добавляем новый элемент в список
+      if (existingItemIndex == -1) {
+        cart.add(CartItem(items[widget.itemIndex], 1));
+      }
+      // Если есть, прибавляем 1 к количеству
+      else {
+        cart[existingItemIndex].number++;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,8 +73,9 @@ class _ItemCardState extends State<ItemCard> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                color: Theme.of(context).primaryColor),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              color: Theme.of(context).primaryColor,
+            ),
             child: Center(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -102,15 +124,27 @@ class _ItemCardState extends State<ItemCard> {
                     ],
                   ),
                 ),
-                IconButton(
-                  icon: Icon(
-                    widget.itemList[widget.itemIndex].favourite
-                        ? Icons.favorite
-                        : Icons.favorite_outline,
-                    color: Colors.white,
-                  ),
-                  onPressed: () => widget
-                      .toggleFavourite(widget.itemList[widget.itemIndex].id),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: _addToCart,
+                      icon: const Icon(
+                        Icons.add_shopping_cart,
+                        color: Colors.white,
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        widget.itemList[widget.itemIndex].favourite
+                            ? Icons.favorite
+                            : Icons.favorite_outline,
+                        color: Colors.white,
+                      ),
+                      onPressed: () => widget.toggleFavourite(
+                          widget.itemList[widget.itemIndex].id),
+                    ),
+                  ],
                 )
               ],
             )),
