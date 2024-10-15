@@ -1,6 +1,6 @@
 // Класс элементов корзины
 
-import 'package:book_app/models/item.dart';
+import 'package:medical_app/models/item.dart';
 
 class CartItem {
   final Item item;

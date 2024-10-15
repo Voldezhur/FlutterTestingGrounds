@@ -1,6 +1,6 @@
 // Список товаров
-import 'package:book_app/models/cart_item.dart';
-import 'package:book_app/models/item.dart';
+import 'package:medical_app/models/cart_item.dart';
+import 'package:medical_app/models/item.dart';
 
 List<Item> items = <Item>[
   Item(

@@ -1,6 +1,5 @@
-import 'package:book_app/global/lists.dart';
+import 'package:medical_app/global/lists.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CartCard extends StatefulWidget {

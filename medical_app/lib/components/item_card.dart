@@ -1,8 +1,8 @@
-import 'package:book_app/models/cart_item.dart';
-import 'package:book_app/models/item.dart';
+import 'package:medical_app/models/cart_item.dart';
+import 'package:medical_app/models/item.dart';
 import 'package:flutter/material.dart';
-import 'package:book_app/global/lists.dart';
-import 'package:book_app/pages/item_page.dart';
+import 'package:medical_app/global/lists.dart';
+import 'package:medical_app/pages/item_page.dart';
 
 class ItemCard extends StatefulWidget {
   const ItemCard({

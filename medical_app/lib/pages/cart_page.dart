@@ -1,5 +1,5 @@
-import 'package:book_app/components/cart_card.dart';
-import 'package:book_app/global/lists.dart';
+import 'package:medical_app/components/cart_card.dart';
+import 'package:medical_app/global/lists.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {

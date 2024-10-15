@@ -1,8 +1,8 @@
-import 'package:book_app/pages/cart_page.dart';
+import 'package:medical_app/pages/cart_page.dart';
 import 'package:flutter/material.dart';
-import 'package:book_app/components/item_card.dart';
-import 'package:book_app/global/lists.dart';
-import 'package:book_app/pages/add_book_page.dart';
+import 'package:medical_app/components/item_card.dart';
+import 'package:medical_app/global/lists.dart';
+import 'package:medical_app/pages/add_book_page.dart';
 
 class BookList extends StatefulWidget {
   const BookList(

@@ -1,6 +1,6 @@
-import 'package:book_app/components/book_list.dart';
+import 'package:medical_app/components/book_list.dart';
 import 'package:flutter/material.dart';
-import 'package:book_app/global/lists.dart';
+import 'package:medical_app/global/lists.dart';
 
 class FavouritePage extends StatefulWidget {
   const FavouritePage({super.key});

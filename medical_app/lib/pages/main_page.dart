@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:book_app/pages/navigation/home_page.dart';
-import 'package:book_app/pages/navigation/favourite_page.dart';
-import 'package:book_app/pages/navigation/profile_page.dart';
+import 'package:medical_app/pages/navigation/home_page.dart';
+import 'package:medical_app/pages/navigation/favourite_page.dart';
+import 'package:medical_app/pages/navigation/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

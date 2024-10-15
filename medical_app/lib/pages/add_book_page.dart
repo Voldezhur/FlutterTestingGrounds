@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:book_app/global/lists.dart';
-import 'package:book_app/models/item.dart';
+import 'package:medical_app/global/lists.dart';
+import 'package:medical_app/models/item.dart';
 
 class AddBookPage extends StatefulWidget {
   const AddBookPage({super.key});

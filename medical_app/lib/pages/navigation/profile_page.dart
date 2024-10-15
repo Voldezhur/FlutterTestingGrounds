@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:book_app/global/lists.dart';
+import 'package:medical_app/global/lists.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
