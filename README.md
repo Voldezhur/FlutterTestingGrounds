@@ -13,4 +13,4 @@
 | 4 | [Ссылка на репозиторий](https://github.com/Voldezhur/flutterPractice4) |
 | 5 | [Ссылка на репозиторий](https://github.com/Voldezhur/flutterPractice5) |
 | 6 | [Ссылка на ветку](https://github.com/Voldezhur/FlutterTestingGrounds/tree/Practice6) |
-| 7 | [ССылка на ветку](https://github.com/Voldezhur/FlutterTestingGrounds/tree/Practice7) |
+| 7 | [Ссылка на ветку](https://github.com/Voldezhur/FlutterTestingGrounds/tree/Practice7) |
