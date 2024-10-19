@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/global/lists.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -122,17 +121,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Книг в библиотеке: ${items.length}',
-                        ),
-                        Text(
-                          'Книг в избранном: ${items.where((item) => item.favourite).length}',
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -182,17 +170,6 @@ class _ProfilePageState extends State<ProfilePage> {
                             )
                           ],
                         )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Книг в библиотеке: ${items.length}',
-                        ),
-                        Text(
-                          'Книг в избранном: ${items.where((item) => item.favourite).length}',
-                        ),
                       ],
                     ),
                   ],

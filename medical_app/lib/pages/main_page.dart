@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/pages/cart_page.dart';
 import 'package:medical_app/pages/navigation/home_page.dart';
-import 'package:medical_app/pages/navigation/favourite_page.dart';
 import 'package:medical_app/pages/navigation/profile_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _MainPageState extends State<MainPage> {
   // Список страниц
   static List<Widget> widgetOptions = const <Widget>[
     HomePage(),
-    FavouritePage(),
+    CartPage(),
     ProfilePage()
   ];
 
@@ -36,6 +36,7 @@ class _MainPageState extends State<MainPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            // icon: Icon(Icons.home),
             label: 'Главная',
           ),
           BottomNavigationBarItem(

@@ -1,4 +1,4 @@
-import 'package:medical_app/components/book_list.dart';
+import 'package:medical_app/components/item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/global/lists.dart';
 
@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BookList(
+    return ItemList(
       itemList: items,
       refreshState: _refreshState,
     );

@@ -16,8 +16,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // Убрали надпись Debug
       title: 'Digital Library',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(26, 111, 238, 100),
+          primary: const Color.fromRGBO(26, 111, 238, 100),
+        ),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        canvasColor: Colors.white,
+        appBarTheme: const AppBarTheme(color: Colors.white),
       ),
       home: const MainPage(),
     );

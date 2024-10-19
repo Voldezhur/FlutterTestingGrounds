@@ -45,10 +45,6 @@ class _CartCardState extends State<CartCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.network(
-                    cart[widget.itemIndex].item.imageLink,
-                    height: MediaQuery.of(context).size.height * 0.1,
-                  ),
                   Flexible(
                     child: Text(
                       cart[widget.itemIndex].item.title,
