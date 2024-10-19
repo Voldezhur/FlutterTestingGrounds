@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> {
         body: cart.isEmpty
             ? const Center(
                 child: Text(
-                  "Пусто 🤷\nПопробуйте добавить книгу в корзину",
+                  "Пусто 🤷\nПопробуйте добавить услугу в корзину",
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),

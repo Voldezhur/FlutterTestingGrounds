@@ -39,6 +39,20 @@ class _ItemCardState extends State<ItemCard> {
     });
   }
 
+  String _addCorrectDayWord(int days) {
+    if (days < 11 || days > 14) {
+      switch (days % 10) {
+        case 1:
+          return "${days.toString()} день";
+        case >= 2 && < 5:
+          return "${days.toString()} дня";
+
+        default:
+      }
+    }
+    return "${days.toString()} дней";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,31 +61,64 @@ class _ItemCardState extends State<ItemCard> {
       margin: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         border: Border.all(
           color: const Color.fromRGBO(224, 224, 224, 100),
         ),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Flexible(
-                child: Text(
-                  items[widget.itemIndex].title,
-                  style: const TextStyle(fontSize: 16),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
-              ),
-            ],
+          Flexible(
+            child: Text(
+              items[widget.itemIndex].title,
+              style: const TextStyle(fontSize: 16),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
-                children: [],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _addCorrectDayWord(items[widget.itemIndex].duration),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color.fromRGBO(147, 147, 150, 100),
+                    ),
+                  ),
+                  Text(
+                    '${items[widget.itemIndex].price} ₽',
+                    style: const TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
               ),
-              Container()
+              GestureDetector(
+                onTap: () => _addToCart(),
+                child: Container(
+                  width: 96,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Добавить',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           )
         ],
