@@ -39,6 +39,7 @@ class _ItemCardState extends State<ItemCard> {
     });
   }
 
+  // Функция для добавления корректного слова для количества дней
   String _addCorrectDayWord(int days) {
     if (days < 11 || days > 14) {
       switch (days % 10) {
@@ -56,7 +57,6 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: MediaQuery.of(context).size.height * 0.1635,
       height: 136,
       margin: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 16),
       padding: const EdgeInsets.all(16),

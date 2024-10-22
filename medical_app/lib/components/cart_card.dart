@@ -1,13 +1,14 @@
 import 'package:medical_app/global/lists.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+import 'dart:math' as math;
 
 class CartCard extends StatefulWidget {
-  const CartCard(
-      {super.key,
-      required this.itemIndex,
-      required this.removeItem,
-      required this.incrementItem});
+  const CartCard({
+    super.key,
+    required this.itemIndex,
+    required this.removeItem,
+    required this.incrementItem,
+  });
 
   final int itemIndex;
   final Function removeItem;
@@ -21,81 +22,71 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16.0),
-      child: Slidable(
-        startActionPane: ActionPane(
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              backgroundColor: Theme.of(context).canvasColor,
-              icon: Icons.delete,
-              label: 'Удалить',
-              onPressed: (context) => widget.removeItem(widget.itemIndex),
-            )
-          ],
+      height: 136,
+      margin: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        border: Border.all(
+          color: const Color.fromRGBO(224, 224, 224, 100),
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            color: Theme.of(context).primaryColor,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                child: Text(
+                  cart[widget.itemIndex].item.title,
+                  style: const TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+              ),
+              Transform.rotate(
+                  angle: 45 * math.pi / 180,
+                  child: IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.add))),
+            ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Center(
-              child: Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Text(
-                      cart[widget.itemIndex].item.title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                  Text(
+                    '${cart[widget.itemIndex].item.price} ₽',
+                    style: const TextStyle(
+                      fontSize: 17,
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        'Стоимость: ${cart[widget.itemIndex].item.price * cart[widget.itemIndex].number}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () =>
-                                widget.incrementItem(widget.itemIndex, true),
-                            icon: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            cart[widget.itemIndex].number.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () =>
-                                widget.incrementItem(widget.itemIndex, false),
-                            icon: const Icon(
-                              Icons.remove,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
+              Container(
+                width: 96,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: Theme.of(context).primaryColor,
+                ),
+                child: const Center(
+                  child: Text(
+                    'Добавить',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
