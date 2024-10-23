@@ -37,16 +37,22 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/icons/home.png',
-              height: 28,
+              height: 21.37,
             ),
             label: 'Главная',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Избранное',
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/cart.png',
+              height: 22.25,
+            ),
+            label: 'Корзина',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/user.png',
+              height: 21,
+            ),
             label: 'Профиль',
           ),
         ],

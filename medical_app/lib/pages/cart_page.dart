@@ -44,40 +44,38 @@ class _CartPageState extends State<CartPage> {
                   textAlign: TextAlign.center,
                 ),
               )
-            : Expanded(
-                child: Stack(
-                  children: [
-                    ListView.builder(
-                      itemCount: cart.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return CartCard(
-                          itemIndex: index,
-                          removeItem: _removeItem,
-                          incrementItem: _incrementItem,
-                        );
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20)),
-                          color: Theme.of(context).disabledColor,
-                        ),
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          'Суммарная стоимость корзины: ${cart.fold(0, (sum, book) => sum + (book.item.price * book.number))}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
+            : Stack(
+                children: [
+                  ListView.builder(
+                    itemCount: cart.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CartCard(
+                        itemIndex: index,
+                        removeItem: _removeItem,
+                        incrementItem: _incrementItem,
+                      );
+                    },
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20)),
+                        color: Theme.of(context).disabledColor,
+                      ),
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Суммарная стоимость корзины: ${cart.fold(0, (sum, book) => sum + (book.item.price * book.number))}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ));
   }
 }
