@@ -33,17 +33,19 @@ class _MainPageState extends State<MainPage> {
       body: widgetOptions.elementAt(selectedIndex),
       // BottomNavigationBar - параметр параметра body
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            // icon: Icon(Icons.home),
+            icon: Image.asset(
+              'assets/icons/home.png',
+              height: 28,
+            ),
             label: 'Главная',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Избранное',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Профиль',
           ),
