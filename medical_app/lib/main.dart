@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         canvasColor: Colors.white,
         appBarTheme: const AppBarTheme(color: Colors.white),
+        fontFamily: 'Montserrat',
       ),
       home: const MainPage(),
     );
