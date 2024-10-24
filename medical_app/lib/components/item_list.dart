@@ -27,15 +27,18 @@ class _BookListState extends State<ItemList> {
                 textAlign: TextAlign.center,
               ),
             )
-          : ListView.builder(
-              itemCount: widget.itemList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ItemCard(
-                  itemIndex: index,
-                  itemList: widget.itemList,
-                  refresh: widget.refreshState,
-                );
-              }),
+          : Container(
+              margin: const EdgeInsets.only(top: 38),
+              child: ListView.builder(
+                  itemCount: widget.itemList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ItemCard(
+                      itemIndex: index,
+                      itemList: widget.itemList,
+                      refresh: widget.refreshState,
+                    );
+                  }),
+            ),
     );
   }
 }

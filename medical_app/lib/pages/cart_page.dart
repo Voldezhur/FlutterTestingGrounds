@@ -44,38 +44,68 @@ class _CartPageState extends State<CartPage> {
                   textAlign: TextAlign.center,
                 ),
               )
-            : Stack(
-                children: [
-                  ListView.builder(
-                    itemCount: cart.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CartCard(
-                        itemIndex: index,
-                        removeItem: _removeItem,
-                        incrementItem: _incrementItem,
-                      );
-                    },
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                        color: Theme.of(context).disabledColor,
-                      ),
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Суммарная стоимость корзины: ${cart.fold(0, (sum, book) => sum + (book.item.price * book.number))}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+            : Container(
+                margin: const EdgeInsets.only(top: 38),
+                child: Stack(
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: cart.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return CartCard(
+                              itemIndex: index,
+                              removeItem: _removeItem,
+                              incrementItem: _incrementItem,
+                            );
+                          },
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(29, 40, 29, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Сумма',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Text(
+                                '${cart.fold(0, (sum, book) => sum + (book.item.price * book.number))} ₽',
+                                style: const TextStyle(fontSize: 20),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 30),
+                        height: 56,
+                        width: 335,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        // padding: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 30),
+                        child: const Center(
+                          child: Text(
+                            'Перейти к оформлению заказа',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ));
   }
 }
