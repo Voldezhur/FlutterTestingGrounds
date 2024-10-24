@@ -7,175 +7,194 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-// Флаг редактирования профиля
-var editing = false;
-
-// Контроллеры для редактирования профиля
-final TextEditingController pictureLinkController = TextEditingController();
-final TextEditingController userNameController = TextEditingController();
-final TextEditingController userLoginController = TextEditingController();
-
-// Данные пользователя
-var userName = 'Имя пользователя';
-var userLogin = 'Логин пользователя';
-var imageLink =
-    'https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg';
-
 class _ProfilePageState extends State<ProfilePage> {
-  // Функция для сохранения изменений профиля
-  void _saveChanges() {
-    setState(() {
-      if (pictureLinkController.text != '') {
-        imageLink = pictureLinkController.text;
-      } else {
-        imageLink =
-            'https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg';
-      }
-
-      userName = userNameController.text;
-      userLogin = userLoginController.text;
-
-      editing = false;
-    });
-  }
-
-  void _toggleEditing() {
-    setState(() {
-      editing = !editing;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return editing
-        ? Scaffold(
-            appBar: AppBar(
-              title: const Text('Профиль'),
-              actions: [
-                IconButton(
-                  onPressed: () => _saveChanges(),
-                  icon: const Icon(Icons.save),
-                )
-              ],
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
+    return Padding(
+      padding: const EdgeInsets.only(top: 48),
+      child: Scaffold(
+        // appBar: AppBar(
+        //   titleSpacing: 27,
+        //   title: const Text(
+        //     "Владимир",
+        //     style: TextStyle(
+        //       fontSize: 24,
+        //       fontWeight: FontWeight.w500,
+        //     ),
+        //   ),
+        // ),
+        body: Container(
+          margin: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 0),
+          child: Column(
+            children: [
+              const Align(
+                alignment: Alignment.topLeft,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.network(
-                          imageLink,
-                          height: 130,
-                        ),
-                        Column(
+                    Text(
+                      "Владимир",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(height: 22),
+                    Text(
+                      "8-800-555-35-35",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromRGBO(137, 138, 141, 100),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      "gaben@valvesoftware.com",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromRGBO(137, 138, 141, 100),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 48, 0, 48),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 64,
+                      width: 335,
+                      child: Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              userName,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            Image.asset(
+                              'assets/icons/order.png',
+                              height: 32,
                             ),
                             const SizedBox(
-                              height: 50,
+                              width: 20,
                             ),
-                            Text(
-                              userLogin,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            )
+                            const Text(
+                              "Мои заказы",
+                              style: TextStyle(fontSize: 17),
+                            ),
                           ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Flexible(
-                      child: TextField(
-                        controller: pictureLinkController,
-                        decoration: const InputDecoration(
-                          label: Text('Введите ссылку на картинку профиля'),
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: TextField(
-                        controller: userNameController,
-                        decoration: const InputDecoration(
-                          label: Text('Введите имя пользователя'),
+                    SizedBox(
+                      height: 64,
+                      width: 335,
+                      child: Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/icons/cards.png',
+                              height: 32,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const Text(
+                              "Медицинские карты",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: TextField(
-                        controller: userLoginController,
-                        decoration: const InputDecoration(
-                          label: Text('Введите логин пользователя'),
+                    SizedBox(
+                      height: 64,
+                      width: 335,
+                      child: Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/icons/adress.png',
+                              height: 32,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const Text(
+                              "Мои адреса",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 64,
+                      width: 335,
+                      child: Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/icons/settings.png',
+                              height: 32,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const Text(
+                              "Настройки",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          )
-        : Scaffold(
-            appBar: AppBar(
-              title: const Text('Профиль'),
-              actions: [
-                IconButton(
-                  onPressed: () => _toggleEditing(),
-                  icon: const Icon(Icons.edit),
-                )
-              ],
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.network(
-                          imageLink,
-                          height: 130,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              userName,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            Text(
-                              userLogin,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
+              const Column(
+                children: [
+                  Text(
+                    "Ответы на вопросы",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromRGBO(147, 147, 150, 100),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 24),
+                  Text(
+                    "Политика конфиденциальности",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromRGBO(147, 147, 150, 100),
+                    ),
+                  ),
+                  SizedBox(height: 24),
+                  Text(
+                    "Пользовательское соглашение",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromRGBO(147, 147, 150, 100),
+                    ),
+                  ),
+                  SizedBox(height: 24),
+                  Text(
+                    "Выход",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromRGBO(253, 53, 53, 100),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          );
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

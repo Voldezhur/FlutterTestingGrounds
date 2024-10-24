@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/pages/cart_page.dart';
+import 'package:medical_app/pages/navigation/cart_page.dart';
 import 'package:medical_app/pages/navigation/home_page.dart';
 import 'package:medical_app/pages/navigation/profile_page.dart';
 

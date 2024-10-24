@@ -99,7 +99,10 @@ class _ItemCardState extends State<ItemCard> {
                   ),
                 ],
               ),
-              GestureDetector(
+              InkWell(
+                customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 onTap: () => _addToCart(),
                 child: Container(
                   width: 96,

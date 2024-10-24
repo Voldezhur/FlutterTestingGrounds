@@ -34,7 +34,11 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Корзина'),
+          title: const Text(
+            'Корзина',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
+          titleSpacing: 27,
         ),
         body: cart.isEmpty
             ? const Center(
@@ -93,12 +97,18 @@ class _CartPageState extends State<CartPage> {
                           color: Theme.of(context).primaryColor,
                         ),
                         // padding: const EdgeInsets.fromLTRB(27.5, 0, 27.5, 30),
-                        child: const Center(
-                          child: Text(
-                            'Перейти к оформлению заказа',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
+                        child: InkWell(
+                          onTap: () {},
+                          customBorder: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Перейти к оформлению заказа',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                              ),
                             ),
                           ),
                         ),

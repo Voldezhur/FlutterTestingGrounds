@@ -17,12 +17,20 @@ class _BookListState extends State<ItemList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Главная"),
+        // leading: const Padding(padding: EdgeInsets.only(left: 27)),
+        // leadingWidth: 27,
+        titleSpacing: 27,
+        title: const Text(
+          "Каталог услуг",
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
       body: widget.itemList.isEmpty
           ? const Center(
               child: Text(
-                "Пусто 🤷\nПопробуйте добавить книгу",
+                "Пусто 🤷\nНет доступных услуг",
                 style: TextStyle(fontSize: 15),
                 textAlign: TextAlign.center,
               ),
