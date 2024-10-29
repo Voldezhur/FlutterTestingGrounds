@@ -5,7 +5,7 @@ class ApiService {
   final Dio dio = Dio();
   Future<List<Item>> getBooks() async {
     try {
-      final response = await dio.get('http://localhost:8080/products');
+      final response = await dio.get('http://10.0.2.2:8080/products');
       if (response.statusCode == 200) {
         // Переводим полученный JSON в список книг
         List<Item> items =

@@ -37,6 +37,7 @@ var products = []Product{
 func getProductsHandler(w http.ResponseWriter, r *http.Request) {
 	// Устанавливаем заголовки для правильного формата JSON
 	w.Header().Set("Content-Type", "application/json")
+	fmt.Printf("Got items")
 	// Преобразуем список заметок в JSON
 	json.NewEncoder(w).Encode(products)
 }
