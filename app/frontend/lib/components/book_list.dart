@@ -23,7 +23,13 @@ class _BookListState extends State<BookList> {
   @override
   void initState() {
     super.initState();
-    items = ApiService().getBooks();
+    _updateList();
+  }
+
+  void _updateList() {
+    setState(() {
+      items = ApiService().getBooks();
+    });
   }
 
   // Переход на страницу добавления новой книги
@@ -94,6 +100,7 @@ class _BookListState extends State<BookList> {
                 }
 
                 final items = snapshot.data!;
+
                 return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -106,7 +113,7 @@ class _BookListState extends State<BookList> {
                         itemIndex: index,
                         toggleFavourite: _toggleFavourite,
                         itemList: items,
-                        refresh: widget.refreshState,
+                        refresh: _updateList,
                       );
                     });
               },

@@ -81,6 +81,7 @@ func getProductByIDHandler(w http.ResponseWriter, r *http.Request) {
 	for _, Product := range products {
 		if Product.ID == id {
 			w.Header().Set("Content-Type", "application/json")
+			fmt.Printf("Got item by id %v", id)
 			json.NewEncoder(w).Encode(Product)
 			return
 		}
