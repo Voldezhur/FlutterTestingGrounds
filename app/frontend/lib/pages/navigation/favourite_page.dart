@@ -1,6 +1,5 @@
 import 'package:book_app/components/book_list.dart';
 import 'package:flutter/material.dart';
-import 'package:book_app/global/lists.dart';
 
 class FavouritePage extends StatefulWidget {
   const FavouritePage({super.key});
@@ -15,7 +14,7 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return BookList(
-      itemList: favourites,
+      itemList: 'favourites',
       refreshState: _refreshState,
     );
   }

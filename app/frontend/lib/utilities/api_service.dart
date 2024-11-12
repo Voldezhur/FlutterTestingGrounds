@@ -3,6 +3,9 @@ import 'package:dio/dio.dart';
 
 class ApiService {
   final Dio dio = Dio();
+
+  // Получить список всех книг
+  // Возвращает список объектов класса Item
   Future<List<Item>> getBooks() async {
     try {
       final response = await dio.get('http://10.0.2.2:8080/products');
@@ -19,6 +22,26 @@ class ApiService {
     }
   }
 
+  Future<List<Item>> getFavourites() async {
+    try {
+      final response = await dio.get('http://10.0.2.2:8080/products');
+      if (response.statusCode == 200) {
+        // Переводим полученный JSON в список книг
+        List<Item> items =
+            (response.data as List).map((item) => Item.fromJson(item)).toList();
+        // Выделяем из полученного списка только любимые
+        final favourites = items.where((x) => x.favourite).toList();
+        return favourites;
+      } else {
+        throw Exception('Failed to load items');
+      }
+    } catch (e) {
+      throw Exception('Error fetching items: $e');
+    }
+  }
+
+  // Получить книгу по ID
+  // Возвращает объект класса Item
   Future<Item> getBookById(id) async {
     try {
       final response = await dio.get('http://10.0.2.2:8080/products/$id');
@@ -33,6 +56,8 @@ class ApiService {
     }
   }
 
+  // Удалить книгу по ID
+  // На вход получает ID книги
   void deleteBookById(id) async {
     try {
       final response =
@@ -46,6 +71,8 @@ class ApiService {
     }
   }
 
+  // Редактировать книгу по ID
+  // Получает на вход ID книги и JSON объект, подогнанный под формат для бекенда
   void updateBookById(id, newItem) async {
     try {
       final response = await dio.put(

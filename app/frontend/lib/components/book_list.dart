@@ -10,7 +10,7 @@ class BookList extends StatefulWidget {
   const BookList(
       {super.key, required this.itemList, required this.refreshState});
 
-  final List itemList;
+  final String itemList;
   final Function refreshState;
 
   @override
@@ -28,7 +28,17 @@ class _BookListState extends State<BookList> {
 
   void _updateList() {
     setState(() {
-      items = ApiService().getBooks();
+      switch (widget.itemList) {
+        case 'main':
+          items = ApiService().getBooks();
+          break;
+        case 'favourites':
+          items = ApiService().getFavourites();
+          break;
+        default:
+          items = ApiService().getBooks();
+          break;
+      }
     });
   }
 
@@ -52,20 +62,6 @@ class _BookListState extends State<BookList> {
   void _navigateToCart(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const CartPage()));
-  }
-
-  void _toggleFavourite(int id) {
-    // setState(() {
-    //   // items[index].favourite = !items[index].favourite;
-    //   // Тогглим флаг любимого по id книги
-    //   items.map((item) {
-    //     if (item.id == id) item.favourite = !item.favourite;
-    //   }).toList();
-
-    //   // Обновляем список любимых книг
-    //   favourites = items.where((item) => item.favourite == true).toList();
-    //   widget.refreshState();
-    // });
   }
 
   @override
@@ -107,7 +103,7 @@ class _BookListState extends State<BookList> {
                       childAspectRatio: (MediaQuery.of(context).size.width) /
                           (MediaQuery.of(context).size.height / 1.2),
                     ),
-                    itemCount: widget.itemList.length,
+                    itemCount: items.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ItemCard(
                         itemIndex: index,
