@@ -59,7 +59,16 @@ func createProductHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Printf("Received new Product: %+v\n", newProduct)
 
-	newProduct.ID = len(products) + 1
+	// Ищем максимальное ID
+	maxID := products[0].ID
+
+	for _, x := range products {
+		if x.ID > maxID {
+			maxID = x.ID
+		}
+	}
+
+	newProduct.ID = maxID + 1
 	products = append(products, newProduct)
 
 	w.Header().Set("Content-Type", "application/json")

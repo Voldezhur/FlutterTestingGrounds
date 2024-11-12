@@ -1,9 +1,9 @@
+import 'package:book_app/pages/add_book_page.dart';
 import 'package:book_app/pages/cart_page.dart';
 import 'package:book_app/utilities/api_service.dart';
+import 'package:book_app/utilities/item_to_json.dart';
 import 'package:flutter/material.dart';
 import 'package:book_app/components/item_card.dart';
-// import 'package:book_app/global/lists.dart';
-// import 'package:book_app/pages/add_book_page.dart';
 import 'package:book_app/models/item.dart';
 
 class BookList extends StatefulWidget {
@@ -44,18 +44,19 @@ class _BookListState extends State<BookList> {
 
   // Переход на страницу добавления новой книги
   void _navigateToAddNote(BuildContext context) async {
-    // // Ждем возвращения со страницы добавления новой книги
-    // final result = await Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => const AddBookPage()),
-    // );
+    // Ждем возвращения со страницы добавления новой книги
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddBookPage()),
+    );
 
-    // // Вместе с выходом нам передался result - в нем новая книга
-    // if (result != null) {
-    //   setState(() {
-    //     items.add(result); // Добавляем новую книгу в список
-    //   });
-    // }
+    // Вместе с выходом нам передался result - в нем новая книга
+    if (result != null) {
+      setState(() {
+        ApiService().addBook(itemToJson(result));
+        _updateList();
+      });
+    }
   }
 
   // Переход на страницу корзины
