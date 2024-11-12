@@ -147,10 +147,14 @@ func updateProductHandler(w http.ResponseWriter, r *http.Request) {
 	for i, Product := range products {
 		if Product.ID == id {
 
-			products[i].ImageLink = updatedProduct.ImageLink
 			products[i].Title = updatedProduct.Title
+			products[i].Author = updatedProduct.Author
+			products[i].ImageLink = updatedProduct.ImageLink
 			products[i].Description = updatedProduct.Description
+			products[i].PageCount = updatedProduct.PageCount
 			products[i].Price = updatedProduct.Price
+
+			products[i].Favourite = updatedProduct.Favourite
 
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(products[i])

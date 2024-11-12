@@ -1,6 +1,7 @@
 import 'package:book_app/models/cart_item.dart';
 import 'package:book_app/models/item.dart';
 import 'package:book_app/utilities/api_service.dart';
+import 'package:book_app/utilities/item_to_json.dart';
 import 'package:flutter/material.dart';
 import 'package:book_app/global/lists.dart';
 import 'package:book_app/pages/item_page.dart';
@@ -9,13 +10,13 @@ class ItemCard extends StatefulWidget {
   const ItemCard({
     super.key,
     required this.itemIndex,
-    required this.toggleFavourite,
+    // required this.toggleFavourite,
     required this.itemList,
     required this.refresh,
   });
 
   final int itemIndex; // Проп для названия заметки
-  final Function toggleFavourite;
+  // final Function toggleFavourite;
   final List itemList;
   final Function refresh;
 
@@ -28,14 +29,15 @@ class _ItemCardState extends State<ItemCard> {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            ItemPage(itemID: widget.itemList[widget.itemIndex].id),
+        builder: (context) => ItemPage(
+            itemID: widget.itemList[widget.itemIndex].id), // Подаем id книги
       ),
     );
 
     if (result == true) {
       setState(() {
-        ApiService().deleteBookById(widget.itemList[widget.itemIndex].id);
+        ApiService().deleteBookById(widget.itemList[widget.itemIndex]
+            .id); // Удаляем книгу по id, если на странице книги нажали на мусорку
         widget.refresh();
       });
     }
@@ -57,6 +59,20 @@ class _ItemCardState extends State<ItemCard> {
       else {
         cart[existingItemIndex].number++;
       }
+    });
+  }
+
+  void _toggleFavourite() {
+    setState(() {
+      Item item = widget.itemList[widget.itemIndex];
+      Object newItem = itemToJson(item, favourite: !item.favourite);
+
+      ApiService().updateBookById(
+        widget.itemList[widget.itemIndex].id,
+        newItem,
+      );
+
+      widget.refresh();
     });
   }
 
@@ -139,8 +155,7 @@ class _ItemCardState extends State<ItemCard> {
                           : Icons.favorite_outline,
                       color: Colors.white,
                     ),
-                    onPressed: () => widget
-                        .toggleFavourite(widget.itemList[widget.itemIndex].id),
+                    onPressed: () => _toggleFavourite(),
                   ),
                 ],
               )

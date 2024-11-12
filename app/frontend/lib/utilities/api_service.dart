@@ -42,7 +42,22 @@ class ApiService {
             'Failed to delete item $id, status code ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('could not delete item: $e`');
+      throw Exception('could not delete item: $e');
+    }
+  }
+
+  void updateBookById(id, newItem) async {
+    try {
+      final response = await dio.put(
+        'http://10.0.2.2:8080/products/update/$id',
+        data: newItem,
+      );
+      if (response.statusCode != 200) {
+        throw Exception(
+            'Failed to update item $id, status code ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('could not update item: $e');
     }
   }
 }
