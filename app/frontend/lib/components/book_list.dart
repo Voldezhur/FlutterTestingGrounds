@@ -67,9 +67,23 @@ class _BookListState extends State<BookList> {
 
   @override
   Widget build(BuildContext context) {
+    String appBarTitle;
+
+    switch (widget.itemList) {
+      case 'main':
+        appBarTitle = 'Главная';
+        break;
+      case 'favourites':
+        appBarTitle = 'Избранное';
+        break;
+      default:
+        appBarTitle = 'placeholder';
+        break;
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Главная"),
+        title: Text(appBarTitle),
         actions: [
           IconButton(
             onPressed: () => _navigateToAddNote(context),
@@ -87,7 +101,7 @@ class _BookListState extends State<BookList> {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(
               child: Text(
-                "Пусто 🤷\n Книг не найдено",
+                "Пусто 🤷\n Моделей не найдено",
                 style: TextStyle(fontSize: 15),
                 textAlign: TextAlign.center,
               ),
@@ -115,7 +129,7 @@ class _BookListState extends State<BookList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _navigateToCart(context),
-        tooltip: 'Добавить книгу',
+        tooltip: 'Добавить модель',
         child: const Icon(Icons.shopping_cart),
       ),
     );
