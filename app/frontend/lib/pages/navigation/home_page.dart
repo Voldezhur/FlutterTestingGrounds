@@ -1,4 +1,4 @@
-import 'package:book_app/components/book_list.dart';
+import 'package:book_app/components/product_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BookList(
+    return ProductList(
       itemList: 'main',
       refreshState: _refreshState,
     );
